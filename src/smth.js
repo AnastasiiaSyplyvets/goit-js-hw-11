@@ -1,6 +1,8 @@
+// 'use strict'
+
 import {inputEl} from "./index";
 import axios from 'axios';
-const axios = require('axios').default;
+// const axios = require('axios').default;
 // const axios = require('axios/dist/browser/axios.cjs'); // browser
 
 

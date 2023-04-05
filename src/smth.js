@@ -8,24 +8,22 @@ export class PixabayApi {
 
      page = 1;
 
-     
 
-   async fetchImages() {
-try{
-    const response = await  fetch(`${this.#BASE_URL}&q=${inputEl.value}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`)
+        async fetchImages() {
+            try{
+             const response =  await  axios.get(`${this.#BASE_URL}&q=${inputEl.value}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`)
+            
+            const data = response.data;
+                 console.log(data);
+                 return data;
+            }
+            catch(error){
+                throw error;
+                console.log(error);
+            }
+            }
+      }
+    
+    
+ 
 
-    // if (!response.ok) {
-    // throw new Error(response.status);
-    // }
-
-    const data = await response.json();
-     console.log(data);
-     return data;
-}
-catch(error){
-    throw error;
-    console.log(error);
-}
-}
-
-}

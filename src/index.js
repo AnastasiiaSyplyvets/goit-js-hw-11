@@ -1,10 +1,7 @@
-// const axios = require('axios/dist/browser/axios.cjs'); // browser
+
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
-// import axios from 'axios';
-// const axios = require('axios').default;
 
 import Notiflix from 'notiflix';
 
@@ -31,7 +28,7 @@ event.preventDefault();
         
 let value = inputEl.value.trim();
 
-// pixabayApi.page = 1; 
+pixabayApi.page = 1; 
 
 if(!value){
     galleryEl.innerHTML = ``;
@@ -42,12 +39,13 @@ if(!value){
 
 // Variant
 try {
+
   const data = await pixabayApi.fetchImages(value);
   console.log(data)
   console.log(data.totalHits);
 
   if(data.hits.length === 0) {
-    // galleryEl.innerHTML = ``;
+    galleryEl.innerHTML = ``;
     Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
   }
   else if(data.hits.length > 0) {
@@ -147,17 +145,10 @@ console.log(data.hits)
 
   galleryEl.insertAdjacentHTML('beforeend', createImageMarkup(data));
 
-  galleryEl.refresh();
+  gallery.refresh();
   loadMoreBtn.classList.remove('is-hidden');
       
 }
- 
-
-
-    // if (data.totalHits <= pixabayApi.page * pixabayApi.perPage) {
-    //   loadMoreBtn.classList.add('is-hidden');
-    //   Notiflix.Notify.info('We are sorry, but you have reached the end of search results.');
-    // }
       
     }
 

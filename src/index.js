@@ -41,8 +41,8 @@ if(!value){
 try {
 
   const data = await pixabayApi.fetchImages(value);
-  console.log(data)
-  console.log(data.totalHits);
+  // console.log(data)
+  // console.log(data.totalHits);
 
   if(data.hits.length === 0) {
     galleryEl.innerHTML = ``;

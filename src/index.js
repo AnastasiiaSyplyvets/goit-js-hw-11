@@ -30,7 +30,9 @@ formEl.addEventListener('submit',  async (event)=>{
 event.preventDefault();
         
 let value = inputEl.value.trim();
-        
+
+console.log(value)
+
 pixabayApi.page = 1;  
 if(!value){
     galleryEl.innerHTML = ``;

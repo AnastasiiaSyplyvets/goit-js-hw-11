@@ -1,9 +1,6 @@
-// 'use strict'
-
 import {inputEl} from "./index";
 import axios from 'axios';
-// const axios = require('axios').default;
-// const axios = require('axios/dist/browser/axios.cjs'); // browser
+
 
 
 export class PixabayApi {
@@ -17,9 +14,9 @@ export class PixabayApi {
 try{
     const response = await  fetch(`${this.#BASE_URL}&q=${inputEl.value}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`)
 
-    if (!response.ok) {
-    throw new Error(response.status);
-    }
+    // if (!response.ok) {
+    // throw new Error(response.status);
+    // }
 
     const data = await response.json();
      console.log(data);

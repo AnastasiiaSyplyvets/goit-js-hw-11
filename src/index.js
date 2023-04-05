@@ -31,9 +31,8 @@ event.preventDefault();
         
 let value = inputEl.value.trim();
 
-console.log(value)
+// pixabayApi.page = 1; 
 
-pixabayApi.page = 1;  
 if(!value){
     galleryEl.innerHTML = ``;
     
@@ -48,7 +47,7 @@ try {
   console.log(data.totalHits);
 
   if(data.hits.length === 0) {
-    galleryEl.innerHTML = ``;
+    // galleryEl.innerHTML = ``;
     Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
   }
   else if(data.hits.length > 0) {
@@ -58,7 +57,7 @@ try {
     
     galleryEl.insertAdjacentHTML('beforeend', createImageMarkup(data));
     
-    galleryEl.refresh();
+    gallery.refresh();
     
     loadMoreBtn.classList.remove('is-hidden');
     
@@ -67,7 +66,7 @@ try {
       
       setTimeout((event) => {
         Notiflix.Notify.info('We are sorry, but you have reached the end of search results.')
-      }, 1000)
+      }, 2000)
     }
   }
 } catch (err) {
@@ -126,11 +125,13 @@ try {
 
 })
 
-loadMoreBtn.addEventListener('click', (e)=> {      
+loadMoreBtn.addEventListener('click', async (e)=> {      
     pixabayApi.page += 1;
 
-  pixabayApi.fetchImages().then(data => 
-    {  
+ const data = await pixabayApi.fetchImages();
+
+try{
+ 
       
 console.log(data.hits.length)
 
@@ -158,11 +159,12 @@ console.log(data.hits)
     //   Notiflix.Notify.info('We are sorry, but you have reached the end of search results.');
     // }
       
-    }).catch(err => {
+    }
 
-      console.log(err)
-      // Notiflix.Notify.info('We are sorry, but you have reached the end of search results.');
-    })
+
+catch(err){
+  console.log(err)
+}
   }) 
 
   inputEl.addEventListener('input', () => {
